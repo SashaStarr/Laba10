@@ -17,6 +17,7 @@ public class LionService {
   public Lion createLion(Lion lion) {
     return lionRepository.save(lion);
   }
+
   public Lion getLion(Integer lionId) {
     return lionRepository.findById(lionId).orElse(null);
   }

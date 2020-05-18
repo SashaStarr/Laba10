@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.lviv.iot.spring.business.LionService;
 import ua.lviv.iot.spring.model.Lion;
 
-
-
 @RequestMapping("/lions")
 @RestController
 public class LionsController {
@@ -31,6 +29,7 @@ public class LionsController {
   private AtomicInteger idAccount = new AtomicInteger();
   @Autowired
   private LionService lionService;
+
   @GetMapping
   public List<Lion> getAllLions() {
     return new LinkedList<Lion>(lions.values());
@@ -52,15 +51,13 @@ public class LionsController {
 
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<Lion> deleteLion(@PathVariable("id") Integer lionId) {
-    HttpStatus status = lions.remove(lionId) == null ? HttpStatus.NOT_FOUND 
-        : HttpStatus.OK;
+    HttpStatus status = lions.remove(lionId) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
     return ResponseEntity.status(status).build();
 
   }
 
   @PutMapping(path = "/{id}")
-  public Lion updateLion(final @PathVariable("id") Integer lionId,
-      final @RequestBody Lion lion) {
+  public Lion updateLion(final @PathVariable("id") Integer lionId, final @RequestBody Lion lion) {
     lion.setId(lionId);
     return lions.put(lionId, lion);
   }
