@@ -1,8 +1,15 @@
-package ua.lviv.iot.string.model;
+package ua.lviv.iot.spring.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class Lion {
   private String name;
   private String color;
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
   private Integer id;
 
   public Lion() {
