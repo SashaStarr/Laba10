@@ -1,15 +1,17 @@
+import { Box, Typography } from "@material-ui/core";
 import React from "react";
-import { MainBody, TextStyle,ProductsContainer, ProductContainer, ProductInfo} from "./Home.styled";
-import Main from "../../../Icons/accessories.jpg";
+import { CatalogHeaderWrap} from "./Catalog.styled";
+import {ProductsContainer, ProductContainer, ProductInfo} from "../Home/Home.styled";
+import { Pagination } from 'antd';
 import Adidas0 from "../../../Icons/adidas1.jpg";
 import Adidas from "../../../Icons/adidas2.jpg";
 import Adidas2 from "../../../Icons/adidas3.jpg";
+import {Button } from "antd";
 import { Image } from '../Help'
 
 const { useState } = require("react");
 
-function Home(props) {
-
+const Catalog = () => {
     const [sneaker, setSneaker] = useState([
         {
             header: "Adidas SMITH",
@@ -27,18 +29,14 @@ function Home(props) {
             img: Adidas2
         }
     ])
-
-    return(<div>
-< MainBody>
-          <TextStyle>
-            <h1>New design</h1>
-            <p>
-              Welcome
-            </p>
-          </TextStyle>
-          <img src={Main} />
-        </ MainBody>
-
+    return (<div>
+        <CatalogHeaderWrap>
+          <Box display="flex" py={5} mb={5}>
+            <Box mx="auto">
+              <Typography variant="h2">Catalog</Typography>
+            </Box>
+          </Box>
+        </CatalogHeaderWrap>
         <ProductsContainer>
             {sneaker.map((sneaker, index) =>
                     <ProductContainer key={`Item${index}`}>
@@ -47,11 +45,14 @@ function Home(props) {
                             <h1>{sneaker.header}</h1>
                             <h2>Price: {sneaker.price}$</h2>
                         </ProductInfo>  
+                        <Button variant="secondary" style={{backgroundColor: "#73E514",borderRadius: "10px",height: '50px',fontWeight: 'bold',border: 0}}>Buy</Button>
                     </ProductContainer>
                 )}
         </ProductsContainer>
-        </div>
-    );
-}
+    </div>
+    )
+      };
 
-  export default Home;
+
+
+export default Catalog;

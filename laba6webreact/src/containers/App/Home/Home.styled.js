@@ -42,6 +42,7 @@ export const ProductContainer = styled.div`
         font-size: 1rem;
         font-weight: 400;
         line-height: 1.5;
+        margin-left: 30px;
     }
     h2 {
         font-size: 1rem;
@@ -49,6 +50,8 @@ export const ProductContainer = styled.div`
         line-height: 1.5;
         color: #c03081;
         padding-top : 10px;
+        margin-left: 40px;
+
     }
     div {
         font-weight: 400;
